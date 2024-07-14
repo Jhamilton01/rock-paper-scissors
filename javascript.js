@@ -1,22 +1,46 @@
 //AUTHOR JESS HAMILTON
 
+const resultsDiv = document.querySelector('#results')
+const rps = document.querySelectorAll("#rps button")
+
 function main(){
 
     let playerScore = 0
     let cpuScore = 0
-    const rps = document.querySelectorAll("#rps button")
-    const resultsDiv = document.querySelector('#results')
-    
+
+
     rps.forEach((button) => {
         button.addEventListener('click', () => {
             let player = button.id
             let cpu = getComputerChoice()
-            console.log('This is the player ',player)
-            console.log('This is the cpu ',cpu)
+            let result = playRound(cpu, player)
+            console.log("this is the reuslt ", result)
+            console.log("this is yoir score ",playerScore)
+            console.log("this is the cpu score ", cpuScore)
+            while (playerScore < 5 && cpuScore < 5){
+                if (result = "Player Wins!"){
+                    playerScore++
+                }else if (results = "Computer Wins!"){
+                    cpuScore++
+                }
 
-            let round = playRound(cpu, player)
+                resultsDiv.innerHTML = ''
+                displayResults(player,cpu,result,playerScore,cpuScore)
+            }
+
+            if (playerScore === 5){
+                alert("You win!")
+                playerScore = 0
+            } else {
+                alert("You lost :(")
+                cpuScore = 0
+            }
+
+
+
         })
     })
+
 
 }
 
@@ -55,26 +79,26 @@ function playRound(computer, player){
         return "Player Wins!"
     }
 
+
+
 }
 
 function displayResults(player, cpu, result, playerScore, cpuScore){
 
-    resultsDiv.innerHTML = ''
-
     const playerChoice = document.createElement('p')
-    playerChoice.textContent = 'Player: ${player}'
+    playerChoice.textContent = `Player: ${player}`
 
     const cpuChoice = document.createElement('p')
-    cpuChoice.textContent = 'CPU: ${cpu}'
+    cpuChoice.textContent = `CPU: ${cpu}`
 
     const roundResult = document.createElement('p')
-    roundResult.textContent = 'Results: ${result}'
+    roundResult.textContent = `Results: ${result}`
 
     const playerScoreDisplay = document.createElement('p')
-    playerScoreDisplay.textContent = 'Player: ${playerScore}'
+    playerScoreDisplay.textContent = `Player: ${playerScore}`
 
     const cpuScoreDisplay = document.createElement('p')
-    cpuScoreDisplay.textContent = 'CPU: ${cpuScore}'
+    cpuScoreDisplay.textContent = `CPU: ${cpuScore}`
 
     resultsDiv.appendChild(playerChoice)
     resultsDiv.appendChild(cpuChoice)
@@ -86,29 +110,3 @@ function displayResults(player, cpu, result, playerScore, cpuScore){
 }
 
 main()
-
-
-
-
-    // while (humanScore < 5 && computerScore < 5){
-//     let computer = getComputerChoice()
-//     let player = getHumanChoice()
-//     let result = playRound(computer, player)
-
-//     if (result == "Player Wins!") {
-//         humanScore++
-//     } else if (result == "Computer Wins!") {
-//         computerScore++
-//     }
-//     console.log("Your score: ", humanScore)
-//     console.log("Computer score: ",computerScore)
-
-//     alert(`Computer choice: ${computer}\nYour choice: ${player}\nResult: ${result}\nYour score: ${humanScore}\nComputer score: ${computerScore}`);
-// }
-
-
-// if (humanScore === 5){
-//     console.log("You win!")
-// } else {
-//     console.log("You lost")
-// }
