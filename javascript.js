@@ -11,32 +11,30 @@ function main(){
 
     rps.forEach((button) => {
         button.addEventListener('click', () => {
-            let player = button.id
-            let cpu = getComputerChoice()
-            let result = playRound(cpu, player)
-            console.log("this is the reuslt ", result)
-            console.log("this is yoir score ",playerScore)
-            console.log("this is the cpu score ", cpuScore)
-            while (playerScore < 5 && cpuScore < 5){
-                if (result = "Player Wins!"){
+            if (playerScore < 5 && cpuScore < 5 ){
+                let player = button.id
+                let cpu = getComputerChoice()
+                let result = playRound(cpu, player)
+        
+                if (result == "Player Wins!"){
                     playerScore++
-                }else if (results = "Computer Wins!"){
+                }else if (result == "Computer Wins!"){
                     cpuScore++
                 }
-
+    
                 resultsDiv.innerHTML = ''
                 displayResults(player,cpu,result,playerScore,cpuScore)
             }
-
-            if (playerScore === 5){
-                alert("You win!")
-                playerScore = 0
-            } else {
-                alert("You lost :(")
-                cpuScore = 0
+            if (playerScore == 5 || cpuScore == 5){
+                resultsDiv.innerHTML += `<p>Game Over!</p>`
+                if (playerScore == 5 ){
+                    resultsDiv.innerHTML += `<p>You win!</p>`
+                }
+                else {
+                    resultsDiv.innerHTML += `<p>You lost :( </p>`
+                    resultsDiv.innerHTML += `<h1>REFRESH PAGE TO PLAY AGAIN</h1>`
+                }
             }
-
-
 
         })
     })
@@ -65,17 +63,14 @@ function getComputerChoice(){
 
 function playRound(computer, player){
     if (computer == player) {
-        console.log("tied")
         return "Tied!"
     }
     else if ((computer == "rock" && player == "scissors") ||
             (computer == "paper" && player == "rock") ||
             (computer == "scissors" && player == "paper")) 
             {
-                console.log("Computer Wins!")
                 return "Computer Wins!"
     }else {
-        console.log("Player Wins!")
         return "Player Wins!"
     }
 
