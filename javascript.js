@@ -1,7 +1,21 @@
 //AUTHOR JESS HAMILTON
 
+const game = document.querySelector("#game")
 const resultsDiv = document.querySelector('#results')
 const rps = document.querySelectorAll("#rps button")
+const scoreDiv = document.createElement('div')
+
+const playerChoice = document.createElement('p')
+const cpuChoice = document.createElement('p')
+const roundResult = document.createElement('p')
+const playerScoreDisplay = document.createElement('p')
+const cpuScoreDisplay = document.createElement('p')
+
+
+
+scoreDiv.id='score'
+game.prepend(scoreDiv)
+
 
 function main(){
 
@@ -21,9 +35,11 @@ function main(){
                 }else if (result == "Computer Wins!"){
                     cpuScore++
                 }
-    
+                scoreDiv.innerHTML = ''
                 resultsDiv.innerHTML = ''
                 displayResults(player,cpu,result,playerScore,cpuScore)
+                scoreDiv.innerHTML = ''
+                scoreDiv.innerHTML = (playerScoreDisplay.textContent = 'Player: ' + playerScore +  '<br>CPU: ' + cpuScore)
             }
             if (playerScore == 5 || cpuScore == 5){
                 resultsDiv.innerHTML += `<p>Game Over!</p>`
@@ -80,28 +96,17 @@ function playRound(computer, player){
 
 function displayResults(player, cpu, result, playerScore, cpuScore){
 
-    const playerChoice = document.createElement('p')
     playerChoice.textContent = `Player: ${player}`
-
-    const cpuChoice = document.createElement('p')
     cpuChoice.textContent = `CPU: ${cpu}`
-
-    const roundResult = document.createElement('p')
     roundResult.textContent = `Results: ${result}`
 
-    const playerScoreDisplay = document.createElement('p')
-    playerScoreDisplay.textContent = `Player: ${playerScore}`
-
-    const cpuScoreDisplay = document.createElement('p')
-    cpuScoreDisplay.textContent = `CPU: ${cpuScore}`
 
     resultsDiv.appendChild(playerChoice)
     resultsDiv.appendChild(cpuChoice)
     resultsDiv.appendChild(roundResult)
-    resultsDiv.appendChild(playerScoreDisplay)
-    resultsDiv.appendChild(cpuScoreDisplay)
 
 
+    return
 }
 
 main()
