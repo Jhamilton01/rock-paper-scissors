@@ -8,6 +8,10 @@ body, html {
     background: radial-gradient(circle, lightcoral, rgb(104, 104, 205), rgb(104, 202, 134));
 }
 
+
+p {
+    margin: 0;
+}
 /* ID CUSTOMIZATION */
 
 #game{
@@ -26,6 +30,9 @@ body, html {
     height: 60px;
     width: 100%;
     border: 3px solid black;
+    text-align: center;
+    flex-direction: column;
+    gap:5px;
 
 }
 
@@ -54,6 +61,8 @@ body, html {
     display: flex;
     text-wrap: wrap;
     flex-direction: column;
+    text-align: center;
+    gap: 5px;
 }
 
 
