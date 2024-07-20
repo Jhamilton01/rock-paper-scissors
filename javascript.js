@@ -50,7 +50,7 @@ function handlePlayerChoice(player){
         if (playerScore < 5 && cpuScore < 5){
             setTimeout(()=>{
                 resetGame()
-            },1250)
+            },2500)
         }else {
             endGame()
         }
@@ -63,7 +63,7 @@ function getRandomInt(max) {
 }
 
 function getCpuChoice(){
-    let choice = getRandomInt(1)
+    let choice = getRandomInt(3)
     return choices[choice]
 
 }
